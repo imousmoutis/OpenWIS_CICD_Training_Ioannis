@@ -11,8 +11,8 @@ addons:
     token:
       secure: "dLmNPWqbRFbpv2BXyMF7DUtAZPKe9lLJH2ee5YU2NJ6EQ+EanuaBdx5N+1DK/w5BBiWoEE21pf6KyLEIYnuvzZCpC8ypZM/ju/3WWjkyJW5E7pDXaTBvqXiDjg0xKrLHH+JG305YG4sGz5Erv6Di3kOZuk0VyyQZ75CSiVPffKy76eWrUY8G0r1bh4qeRj5e1/K70BmXqLHRmBCKQugx4CldApEC13httTBmiKxyWi7x5SYkNJWpLswORuRYPiti//WKASFpOF3MmO6oeU1Wp/uZlfpFhSYO6Cu/0nOkRo3ctzk1w6vFFR5NkVWqWU+V6DOEqYtEW9jsKAlLPJ+9+6yGwxEKx6mKy8PLCufdjDLMMa3Q9ios1BZK1cEXwWyOEzgK60U76FbUUn7AE674KEXKfTOBElcdGR7jyilzSWvTI7bEibeRk1giIVoVLE7gDtEGqwkJo53I8cCGP8AlxH7HuVOSynjT4AfgZWiDAHJjR8fFeQc1pBxyAYxGKoeodBC0Czk0VIB7+P3um3TKPGnU87YGn+ZWBhwVVvMOvecxgO7aD9kiszNF7r2Kv3Y93dy9xJHLgmF7jI8uBaK6ZHSrYzsDbBEJ/oLe4ZO7qL7wy797e4MsqTzoXiJighDQZpQu1wCu0jO5nqsq58hBYOs4hHrXbS7sudHvsHAxlQo="
 
-script:
-  - ./mvnw clean install sonar:sonar -Dsonar.projectKey=imousmoutis_OpenWIS_CICD_Training_Ioannis
+  script:
+  - ./mvnw clean install sonar:sonar -Dsonar.projectKey=imousmoutis_OpenWIS_CICD_Training_Ioannis 
 
 notifications:
   email:
