@@ -7,3 +7,10 @@ before_install:
 
 script:
   - ./mvnw clean install
+
+notifications:
+  email:
+    recipients:
+      secure: "Xj4uCB5lmBplulzrruuYOcrpp6Owp5chMCYCO/OaY0MQeLxYFyC5xUlL3sAMaZtNBuE03zGVjz2Mz021uQ5BTXaS7AzNQ70uOis0D5XuAoDiljWLOauV8BtRRD/QmLo7TqmnAr6YXh2Mjzlc1+DL7dDMlUHBBfopYZzliljZWl74XFrTMcnLuv5d21wOfPh//2/55sKukeaP2scS/qP+ZAIJ/nbD9x0pAv9QS0YgvXBE+ny9Cy/DJ0aiz1li0+aXifxQIzOKz9sWC8RV5YtWfdrLt1ff3vxWjvwO1vUno4ZlNLGD0LXN2D+GHy3JtRN1nydcvK7dmZDMCq2wmn+Yu5OhLMKhWBEnYOu+/XMQIKwsUBMjCH8YhmFkHz4VkxdOdtPzBSOdQAosMCk8Hk57Ok+1tbkyxl8lCZPHsX2pjStEXTMNa7CWf3ywHNJtFIE04+/DoZ9vQiTpfEionvHmMxXTXik7pWpiYgvYwcVgBFC34euTw8OR2Yw9ZhvGo8mat1nGTTh6FsSIfFrxGDV38GMGS0h3yA52yyw2J/DocMyekked4gVlPa1Nkb0q7rALVfWW2Mzia0zTs9cx7Ie77DeL7Lly+EpUEX1BTW7nlCGVCC8W+5qgC/WCoatmissjtskPjI6qIuq/b0s3hP/esMKIPCNa3eiG3YtaMU9E+lM="
+  on_success: always
+  on_failure: always
