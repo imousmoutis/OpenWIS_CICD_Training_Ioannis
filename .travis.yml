@@ -1,5 +1,7 @@
 language: java
+
 jdk: openjdk11
+
 before_install:
 - openssl aes-256-cbc -K $encrypted_8408ce87f49d_key -iv $encrypted_8408ce87f49d_iv -in ioannis_rsa.enc -out ioannis_rsa -d
 - chmod +x mvnw
@@ -7,13 +9,29 @@ before_install:
 - chmod 600 ioannis_rsa
 - ssh-add ioannis_rsa
 - echo -e "Host ${DEPLOY_HOST}\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+
 addons:
   sonarcloud:
     organization: imousmoutis
     token:
       secure: dLmNPWqbRFbpv2BXyMF7DUtAZPKe9lLJH2ee5YU2NJ6EQ+EanuaBdx5N+1DK/w5BBiWoEE21pf6KyLEIYnuvzZCpC8ypZM/ju/3WWjkyJW5E7pDXaTBvqXiDjg0xKrLHH+JG305YG4sGz5Erv6Di3kOZuk0VyyQZ75CSiVPffKy76eWrUY8G0r1bh4qeRj5e1/K70BmXqLHRmBCKQugx4CldApEC13httTBmiKxyWi7x5SYkNJWpLswORuRYPiti//WKASFpOF3MmO6oeU1Wp/uZlfpFhSYO6Cu/0nOkRo3ctzk1w6vFFR5NkVWqWU+V6DOEqYtEW9jsKAlLPJ+9+6yGwxEKx6mKy8PLCufdjDLMMa3Q9ios1BZK1cEXwWyOEzgK60U76FbUUn7AE674KEXKfTOBElcdGR7jyilzSWvTI7bEibeRk1giIVoVLE7gDtEGqwkJo53I8cCGP8AlxH7HuVOSynjT4AfgZWiDAHJjR8fFeQc1pBxyAYxGKoeodBC0Czk0VIB7+P3um3TKPGnU87YGn+ZWBhwVVvMOvecxgO7aD9kiszNF7r2Kv3Y93dy9xJHLgmF7jI8uBaK6ZHSrYzsDbBEJ/oLe4ZO7qL7wy797e4MsqTzoXiJighDQZpQu1wCu0jO5nqsq58hBYOs4hHrXbS7sudHvsHAxlQo=
+
 script:
 - "./mvnw clean install sonar:sonar -Dsonar.projectKey=imousmoutis_OpenWIS_CICD_Training_Ioannis"
+
+deploy:
+  - provider: script
+    skip-cleanup: true
+    script: rsync -r --quiet --delete-after ${TRAVIS_BUILD_DIR}/target/cicd-example-*.jar ${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_DIRECTORY}    
+    on:
+      branch: master
+
+  - provider: script
+    skip-cleanup: true
+    script: sh ${TRAVIS_BUILD_DIR}/remote_deploy.sh
+    on:
+      branch: master
+
 notifications:
   email:
     recipients:
